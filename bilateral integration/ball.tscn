@@ -36,6 +36,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.103508, 0, 0)
 shape = SubResource("SphereShape3D_2hcen")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_doh56")
 mesh = SubResource("SphereMesh_pukvk")
 
@@ -43,18 +44,16 @@ mesh = SubResource("SphereMesh_pukvk")
 script = ExtResource("1_xqhyi")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="XRToolsHighlightVisible"]
-transform = Transform3D(1.1, 0, 0, 0, 1.1, 0, 0, 0, 1.1, 0, 0, 0)
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
 mesh = SubResource("SphereMesh_4o0i6")
 surface_material_override/0 = SubResource("StandardMaterial3D_2d2m7")
 
 [node name="GrabPointHandLeft" parent="." instance=ExtResource("2_hrhxk")]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -0.444322, 0.24901, -0.46818)
-visible = true
 hand_pose = SubResource("Resource_qepuw")
 editor_preview_mode = 1
 
 [node name="GrabPointHandRight" parent="." instance=ExtResource("5_pmxtm")]
 transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0.412992, 0.204636, -0.500874)
-visible = true
 hand_pose = SubResource("Resource_g2omn")
 editor_preview_mode = 1
