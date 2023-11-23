@@ -1,0 +1,55 @@
+[gd_scene load_steps=9 format=3 uid="uid://barysq5arg3yk"]
+
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="1_vats3"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="2_qfeul"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="3_khp5p"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oy10v"]
+albedo_color = Color(0.976471, 0.443137, 0, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_2sar8"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sv1hu"]
+
+[sub_resource type="Resource" id="Resource_theft"]
+script = ExtResource("2_qfeul")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7l6vp"]
+
+[node name="Climbing bars" type="Node3D"]
+transform = Transform3D(-0.999991, 0, -0.00434574, 0, 1, 0, 0.00434574, 0, -0.999991, 0, 0, 0)
+
+[node name="Handle" type="StaticBody3D" parent="."]
+
+[node name="Handle" type="MeshInstance3D" parent="Handle"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 2, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_oy10v")
+mesh = SubResource("BoxMesh_2sar8")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Handle"]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 2, 0, 0, 0)
+shape = SubResource("BoxShape3D_sv1hu")
+
+[node name="GrabPointHandLeft" parent="Handle" instance=ExtResource("1_vats3")]
+transform = Transform3D(-2.99851, -0.0547394, -0.0771715, 0.0792579, -0.116869, -2.99667, 0.0516725, -2.99722, 0.118257, 0.135675, 0.306657, -0.0240544)
+visible = true
+hand_pose = SubResource("Resource_theft")
+editor_preview_mode = 1
+
+[node name="GrabPointHandRight" parent="Handle" instance=ExtResource("3_khp5p")]
+transform = Transform3D(2.99994, -0.0130275, 0.013546, 0.0130269, -0.117201, -2.99768, 0.0135467, 2.99768, -0.117142, 0.128828, 0.31693, -0.110896)
+visible = true
+editor_preview_mode = 1
+
+[node name="Bar" type="StaticBody3D" parent="."]
+
+[node name="Bar" type="MeshInstance3D" parent="Bar"]
+transform = Transform3D(-0.000265297, 0, 2, 0, 0.2, 0, -0.2, 0, -0.00265297, -1.08157, 0, 0)
+material_override = SubResource("StandardMaterial3D_oy10v")
+mesh = SubResource("BoxMesh_2sar8")
+skeleton = NodePath("../..")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Bar"]
+transform = Transform3D(-0.000349077, 0, 2, 0, 0.2, 0, -0.2, 0, -0.00349077, -1.082, 0, 0)
+shape = SubResource("BoxShape3D_7l6vp")

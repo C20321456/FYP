@@ -1,16 +1,13 @@
-[gd_scene load_steps=6 format=3 uid="uid://dedjpc53lyhei"]
+[gd_scene load_steps=5 format=3 uid="uid://dedjpc53lyhei"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o1p3c"]
 albedo_color = Color(0.588235, 0.435294, 0.2, 1)
 
 [sub_resource type="BoxMesh" id="BoxMesh_54x03"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_17d8d"]
-albedo_color = Color(0.588235, 0.435294, 0.2, 1)
+[sub_resource type="BoxMesh" id="BoxMesh_loae7"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_fjp0b"]
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_peq7x"]
+[sub_resource type="BoxShape3D" id="BoxShape3D_pleas"]
 
 [node name="Table" type="Node3D"]
 
@@ -20,14 +17,13 @@ material_override = SubResource("StandardMaterial3D_o1p3c")
 mesh = SubResource("BoxMesh_54x03")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
-transform = Transform3D(25, 0, 0, 0, 0.01, 0, 0, 0, 25, 0, 2.56801, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.01471, 0)
 
-[node name="TableDesk" type="MeshInstance3D" parent="StaticBody3D"]
-transform = Transform3D(0.1, 0, 0, 0, 10, 0, 0, 0, 0.1, 0, -156.015, 0)
-material_override = SubResource("StandardMaterial3D_17d8d")
-mesh = SubResource("BoxMesh_fjp0b")
-skeleton = NodePath("../..")
+[node name="MeshInstance3D" type="MeshInstance3D" parent="StaticBody3D"]
+transform = Transform3D(2, 0, 0, 0, 0.2, 0, 0, 0, 2, 0, 0, 0)
+mesh = SubResource("BoxMesh_loae7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(0.1, 0, 0, 0, 10, 0, 0, 0, 0.1, 0, -155.95, 0)
-shape = SubResource("BoxShape3D_peq7x")
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.891198, 0)
+visible = false
+shape = SubResource("BoxShape3D_pleas")
