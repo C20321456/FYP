@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://barysq5arg3yk"]
+[gd_scene load_steps=10 format=3 uid="uid://barysq5arg3yk"]
 
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="1_vats3"]
 [ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="2_qfeul"]
@@ -12,6 +12,9 @@ albedo_color = Color(0.976471, 0.443137, 0, 1)
 [sub_resource type="BoxShape3D" id="BoxShape3D_sv1hu"]
 
 [sub_resource type="Resource" id="Resource_theft"]
+script = ExtResource("2_qfeul")
+
+[sub_resource type="Resource" id="Resource_1ypd2"]
 script = ExtResource("2_qfeul")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7l6vp"]
@@ -40,6 +43,7 @@ editor_preview_mode = 1
 [node name="GrabPointHandRight" parent="Handle" instance=ExtResource("3_khp5p")]
 transform = Transform3D(2.99994, -0.0130275, 0.013546, 0.0130269, -0.117201, -2.99768, 0.0135467, 2.99768, -0.117142, 0.128828, 0.31693, -0.110896)
 visible = true
+hand_pose = SubResource("Resource_1ypd2")
 editor_preview_mode = 1
 
 [node name="Bar" type="StaticBody3D" parent="."]

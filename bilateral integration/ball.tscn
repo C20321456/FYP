@@ -1,44 +1,55 @@
-[gd_scene load_steps=11 format=3 uid="uid://fhv3iivrluiy"]
+[gd_scene load_steps=10 format=3 uid="uid://fhv3iivrluiy"]
 
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_aa1v4"]
 [ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="2_hrhxk"]
-[ext_resource type="Animation" uid="uid://nq3xh1olqipq" path="res://addons/godot-xr-tools/hands/animations/left/Grip Shaft.res" id="3_kqkb4"]
-[ext_resource type="Script" path="res://addons/godot-xr-tools/hands/poses/hand_pose_settings.gd" id="4_6nrbu"]
 [ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="5_pmxtm"]
-[ext_resource type="Animation" uid="uid://c8dghcftg1thx" path="res://addons/godot-xr-tools/hands/animations/right/Grip Shaft.res" id="6_0d4h8"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/highlight/highlight_visible.gd" id="7_cgs2m"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_aul3v"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_doh56"]
-albedo_color = Color(0.972549, 0.505882, 0.345098, 1)
-
 [sub_resource type="SphereMesh" id="SphereMesh_pukvk"]
+radius = 0.2
+height = 0.4
+radial_segments = 16
+rings = 7
 
-[sub_resource type="Resource" id="Resource_qepuw"]
-script = ExtResource("4_6nrbu")
-closed_pose = ExtResource("3_kqkb4")
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_uw2xf"]
+albedo_color = Color(0.933333, 0.403922, 0.188235, 1)
 
-[sub_resource type="Resource" id="Resource_g2omn"]
-script = ExtResource("4_6nrbu")
-closed_pose = ExtResource("6_0d4h8")
+[sub_resource type="SphereMesh" id="SphereMesh_lqfc3"]
+flip_faces = true
+radius = 0.21
+height = 0.42
+radial_segments = 16
+rings = 7
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tnqpi"]
+shading_mode = 0
+albedo_color = Color(1, 1, 0, 1)
 
 [node name="Ball" type="RigidBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.103508, 0, 0)
+script = ExtResource("1_aa1v4")
+ranged_grab_method = 2
+
+[node name="GrabPointHandLeft" parent="." instance=ExtResource("2_hrhxk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.203657, 0.0506594, -0.327807)
+
+[node name="GrabPointHandRight" parent="." instance=ExtResource("5_pmxtm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.198975, 0.0452294, -0.0998808)
+visible = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
 shape = SubResource("SphereShape3D_aul3v")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.4, 0, 0, 0, 0.4, 0, 0, 0, 0.4, 0, 0, 0)
-material_override = SubResource("StandardMaterial3D_doh56")
 mesh = SubResource("SphereMesh_pukvk")
+surface_material_override/0 = SubResource("StandardMaterial3D_uw2xf")
 
-[node name="GrabPointHandLeft" parent="." instance=ExtResource("2_hrhxk")]
-transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, -0.444322, 0.24901, -0.46818)
-hand_pose = SubResource("Resource_qepuw")
-editor_preview_mode = 1
+[node name="GrabHighlight" type="Node3D" parent="."]
+script = ExtResource("7_cgs2m")
 
-[node name="GrabPointHandRight" parent="." instance=ExtResource("5_pmxtm")]
-transform = Transform3D(7, 0, 0, 0, 7, 0, 0, 0, 7, 0.412992, 0.204636, -0.500874)
-hand_pose = SubResource("Resource_g2omn")
-editor_preview_mode = 1
+[node name="MeshInstance3D" type="MeshInstance3D" parent="GrabHighlight"]
+mesh = SubResource("SphereMesh_lqfc3")
+surface_material_override/0 = SubResource("StandardMaterial3D_tnqpi")

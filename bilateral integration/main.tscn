@@ -101,11 +101,11 @@ mesh = SubResource("BoxMesh_byjl4")
 [node name="Table" parent="." instance=ExtResource("8_ta2uo")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.53913, 0)
 
-[node name="Ball" parent="Table" instance=ExtResource("9_64v4p")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.103508, 1.57095, 7.06596)
-
 [node name="Balloon" parent="Table" instance=ExtResource("12_iw4vp")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72067, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.72067, -4.27172)
+
+[node name="Ball" parent="Table" instance=ExtResource("9_64v4p")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.103508, 1.43015, 0.735503)
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(0.999589, -0.000160635, -0.0286714, 0.0286718, 0.00560022, 0.999573, 0, -0.999984, 0.00560253, 0, 23.4526, 0)

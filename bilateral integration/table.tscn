@@ -8,6 +8,7 @@ albedo_color = Color(0.588235, 0.435294, 0.2, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_loae7"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_pleas"]
+size = Vector3(2, 0.2, 2)
 
 [node name="Table" type="Node3D"]
 
@@ -24,6 +25,6 @@ transform = Transform3D(2, 0, 0, 0, 0.2, 0, 0, 0, 2, 0, 0, 0)
 mesh = SubResource("BoxMesh_loae7")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, -0.891198, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.00634003, 0)
 visible = false
 shape = SubResource("BoxShape3D_pleas")

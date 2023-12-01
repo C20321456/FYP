@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://l8e5fwyrcvar"]
+
+[ext_resource type="Script" path="res://addons/godot-xr-tools/objects/pickable.gd" id="1_smy3a"]
+
+[node name="Pickable" type="RigidBody3D"]
+script = ExtResource("1_smy3a")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
