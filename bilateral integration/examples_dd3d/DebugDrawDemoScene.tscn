@@ -168,41 +168,34 @@ _data = {
 [sub_resource type="Theme" id="3"]
 
 [sub_resource type="GDScript" id="2"]
-script/source = "@tool
-extends Control
+script/source = "extends Control
 
 @export var switch_to_scene = \"\"
 
-var frames := 0
-
-func _process(_delta):
-	frames += 1
-	if frames == 3:
-		_deferred_init()
-		set_process(false)
-
-func _deferred_init():
+func _ready() -> void:
 	$GC/VB/H/Button.disabled = true
+	await get_tree().process_frame
+	await get_tree().process_frame
 	
-	var test := DebugDraw2D.get_graph(&\"FPS\")
+	var test := DebugDraw.get_graph(&\"FPS\")
 	if test:
 		$GC/VB/H/FPSEnabled.button_pressed = test.enabled
 		$GC/VB/FPSMS.button_pressed = test.frame_time_mode
 		$GC/VB/HSlider.value = test.size.x
 		$GC/VB/HSlider2.value = test.buffer_size
+	await get_tree().create_timer(0.2).timeout
 	
-	if get_tree():
-		await get_tree().create_timer(0.2).timeout
-	
-	$GC/VB/H/Button.disabled = false
+	# TODO: temp disabled
+	$GC/VB/H/Button.disabled = true
+
 
 func _on_CheckBox_toggled(button_pressed: bool) -> void:
-	var cfg = DebugDraw2D.get_graph(&\"FPS\")
+	var cfg = DebugDraw.get_graph(&\"FPS\")
 	if cfg:
 		cfg.enabled = button_pressed
 
 func _on_FPSMS_toggled(button_pressed: bool) -> void:
-	var cfg = DebugDraw2D.get_graph(&\"FPS\")
+	var cfg = DebugDraw.get_graph(&\"FPS\")
 	if cfg:
 		cfg.frame_time_mode = button_pressed
 
@@ -213,6 +206,7 @@ func _on_HSlider2_value_changed(value: float) -> void:
 	get_parent().graph_buffer_size = int(value)
 
 func _on_Button_pressed() -> void:
+	DebugDraw.clear_all()
 	get_tree().call_deferred(\"change_scene_to_file\", switch_to_scene)
 "
 
@@ -237,7 +231,6 @@ far = 60.0
 
 [node name="Panel" type="PanelContainer" parent="."]
 visible = false
-custom_minimum_size = Vector2(300, 300)
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
@@ -247,10 +240,11 @@ grow_vertical = 0
 
 [node name="ViewportContainer" type="SubViewportContainer" parent="Panel"]
 layout_mode = 2
+stretch = true
 
 [node name="Viewport" type="SubViewport" parent="Panel/ViewportContainer"]
 handle_input_locally = false
-size = Vector2i(300, 300)
+size = Vector2i(2, 2)
 render_target_update_mode = 0
 
 [node name="CameraLayer2_5" type="Camera3D" parent="Panel/ViewportContainer/Viewport"]
@@ -334,7 +328,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.4103, 0, 6.71577)
 [node name="Box3" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.0067, 0, 10.5182)
 
-[node name="BoxOutOfDistanceCulling" type="Node3D" parent="."]
+[node name="BoxOutOfDistabceCulling" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.608, 0.344, -16.314)
 
 [node name="AABB" type="Node3D" parent="."]
@@ -520,7 +514,6 @@ layout_mode = 2
 [node name="FPSEnabled" type="CheckBox" parent="Settings/GC/VB/H"]
 layout_mode = 2
 size_flags_horizontal = 3
-button_pressed = true
 text = "FPS Graph enabled"
 
 [node name="Button" type="Button" parent="Settings/GC/VB/H"]
@@ -529,20 +522,19 @@ text = "Switch to C#"
 
 [node name="FPSMS" type="CheckBox" parent="Settings/GC/VB"]
 layout_mode = 2
-button_pressed = true
 text = "FPS Graph ms or FPS"
 
 [node name="HSlider" type="HSlider" parent="Settings/GC/VB"]
 layout_mode = 2
 min_value = 50.0
 max_value = 1000.0
-value = 200.0
+value = 50.0
 
 [node name="HSlider2" type="HSlider" parent="Settings/GC/VB"]
 layout_mode = 2
 min_value = 50.0
 max_value = 1000.0
-value = 128.0
+value = 50.0
 
 [connection signal="toggled" from="Settings/GC/VB/H/FPSEnabled" to="Settings" method="_on_CheckBox_toggled"]
 [connection signal="pressed" from="Settings/GC/VB/H/Button" to="Settings" method="_on_Button_pressed"]

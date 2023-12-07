@@ -18,11 +18,10 @@ config/icon="res://icon.svg"
 [autoload]
 
 XRToolsUserSettings="*res://addons/godot-xr-tools/user_settings/user_settings.gd"
-Main="*res://demo_staging.tscn"
 
-[editor_plugins]
+[filesystem]
 
-enabled=PackedStringArray("res://addons/godot-xr-tools/plugin.cfg")
+import/fbx/enabled=false
 
 [rendering]
 
@@ -34,4 +33,5 @@ anti_aliasing/screen_space_roughness_limiter/enabled=false
 [xr]
 
 openxr/enabled=true
+openxr/startup_alert=false
 shaders/enabled=true
