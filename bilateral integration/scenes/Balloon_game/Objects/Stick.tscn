@@ -1,12 +1,44 @@
-[gd_scene load_steps=3 format=3 uid="uid://dkvfibnbiyxhx"]
+[gd_scene load_steps=10 format=3 uid="uid://dkvfibnbiyxhx"]
 
 [ext_resource type="PackedScene" uid="uid://c8l60rnugru40" path="res://addons/godot-xr-tools/objects/pickable.tscn" id="1_5j4vk"]
+[ext_resource type="Material" uid="uid://xu1mdplp6444" path="res://assets/wahooney.itch.io/brown_grid_triplanar.tres" id="2_uvfvj"]
+[ext_resource type="PackedScene" uid="uid://c25yxb0vt53vc" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_left.tscn" id="3_mr4rf"]
+[ext_resource type="Resource" uid="uid://dd4sqdg8upblx" path="res://scenes/pickable_demo/poses/pose_hammer_left.tres" id="4_rh7xh"]
+[ext_resource type="PackedScene" uid="uid://ctw7nbntd5pcj" path="res://addons/godot-xr-tools/objects/grab_points/grab_point_hand_right.tscn" id="5_c4pdj"]
+[ext_resource type="Resource" uid="uid://c7lps5l5dj652" path="res://scenes/pickable_demo/poses/pose_hammer_right.tres" id="6_ci5ym"]
+[ext_resource type="PackedScene" uid="uid://da2qgxxwwitl6" path="res://addons/godot-xr-tools/objects/highlight/highlight_ring.tscn" id="7_b2vk8"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c03fe"]
+[sub_resource type="CylinderMesh" id="CylinderMesh_1ag5d"]
+top_radius = 0.02
+bottom_radius = 0.02
+height = 0.8
+radial_segments = 8
+rings = 0
 
-[node name="Node3D" type="Node3D"]
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_vdxwb"]
+points = PackedVector3Array(-0.02, -0.4, 0, -0.0141425, -0.4, -0.0141425, -0.0141425, -0.4, 0.0141386, -0.02, 0.4, 0, -0.0141425, 0.4, -0.0141425, 0, -0.4, -0.02, 0, -0.4, 0.02, -0.0141425, 0.4, 0.0141386, 0, 0.4, -0.02, 0.0141386, -0.4, -0.0141425, 0.0141386, -0.4, 0.0141386, 0, 0.4, 0.02, 0.0141386, 0.4, -0.0141425, 0.02, -0.4, 0, 0.0141386, 0.4, 0.0141386, 0.02, 0.4, 0)
+
+[node name="Stick" type="Node3D"]
 
 [node name="BroomStick" parent="." instance=ExtResource("1_5j4vk")]
 
-[node name="CSGBox3D" type="CSGBox3D" parent="BroomStick"]
-material = SubResource("StandardMaterial3D_c03fe")
+[node name="Handle" type="MeshInstance3D" parent="BroomStick"]
+mesh = SubResource("CylinderMesh_1ag5d")
+surface_material_override/0 = ExtResource("2_uvfvj")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="BroomStick"]
+shape = SubResource("ConvexPolygonShape3D_vdxwb")
+
+[node name="GrabPointHandLeft" parent="BroomStick" instance=ExtResource("3_mr4rf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0126547, -0.182279, -0.0817713)
+hand_pose = ExtResource("4_rh7xh")
+
+[node name="GrabPointHandRight" parent="BroomStick" instance=ExtResource("5_c4pdj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.63001e-05, 0.325237, -0.0532424)
+hand_pose = ExtResource("6_ci5ym")
+
+[node name="HighlightRingR" parent="BroomStick" instance=ExtResource("7_b2vk8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.285619, 0)
+
+[node name="HighlightRingL" parent="BroomStick" instance=ExtResource("7_b2vk8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.228642, 0)
