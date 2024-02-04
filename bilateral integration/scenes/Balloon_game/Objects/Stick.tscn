@@ -11,7 +11,7 @@
 [sub_resource type="CylinderMesh" id="CylinderMesh_1ag5d"]
 top_radius = 0.02
 bottom_radius = 0.02
-height = 0.8
+height = 1.0
 radial_segments = 8
 rings = 0
 
@@ -30,15 +30,15 @@ surface_material_override/0 = ExtResource("2_uvfvj")
 shape = SubResource("ConvexPolygonShape3D_vdxwb")
 
 [node name="GrabPointHandLeft" parent="BroomStick" instance=ExtResource("3_mr4rf")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0126547, -0.182279, -0.0817713)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0126547, -0.314895, -0.0817713)
 hand_pose = ExtResource("4_rh7xh")
 
 [node name="GrabPointHandRight" parent="BroomStick" instance=ExtResource("5_c4pdj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.63001e-05, 0.325237, -0.0532424)
+transform = Transform3D(-0.998943, 0.0459732, 0, -0.0459732, -0.998943, 0, 0, 0, 1, 0.0126547, 0.348725, -0.0817713)
 hand_pose = ExtResource("6_ci5ym")
 
 [node name="HighlightRingR" parent="BroomStick" instance=ExtResource("7_b2vk8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.285619, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.405648, 0)
 
 [node name="HighlightRingL" parent="BroomStick" instance=ExtResource("7_b2vk8")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.228642, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.36277, 0)
