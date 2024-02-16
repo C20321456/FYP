@@ -1,4 +1,4 @@
-[gd_scene load_steps=100 format=3 uid="uid://claxsdhbuuti4"]
+[gd_scene load_steps=105 format=3 uid="uid://claxsdhbuuti4"]
 
 [ext_resource type="PackedScene" uid="uid://rypqa6qcv0st" path="res://assets/maps/basic_map.tscn" id="1_exo1q"]
 [ext_resource type="Script" path="res://scenes/Climbing_game/climbing_game.gd" id="1_um23e"]
@@ -84,7 +84,10 @@
 [ext_resource type="PackedScene" uid="uid://diyu06cw06syv" path="res://addons/godot-xr-tools/player/player_body.tscn" id="82_chum3"]
 [ext_resource type="Resource" path="res://scenes/sprinting_demo/player_physics.tres" id="83_efe7i"]
 [ext_resource type="PackedScene" uid="uid://bxm1ply47vaan" path="res://addons/godot-xr-tools/functions/movement_climb.tscn" id="84_6hxfp"]
+[ext_resource type="PackedScene" uid="uid://0p8jq7vbpxlo" path="res://scenes/Climbing_game/Objects/climbing_cliff.tscn" id="85_bmhfp"]
 [ext_resource type="PackedScene" uid="uid://d3owfsdairded" path="res://scenes/Climbing_game/Objects/climbing_bar.tscn" id="85_x7g0n"]
+[ext_resource type="PackedScene" uid="uid://3a6wjr3a13vd" path="res://assets/meshes/teleport/teleport.tscn" id="87_ve7cf"]
+[ext_resource type="PackedScene" uid="uid://bs1jbxhdn1fj3" path="res://scenes/Climbing_game/Objects/finish_button.tscn" id="88_o8l46"]
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_kw48d"]
 _data = {
@@ -125,34 +128,34 @@ _data = {
 "Thumb": ExtResource("40_00dlw")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_xhnds"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jbywv"]
 animation = &"Grip"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_3nj2l"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_x00x3"]
 animation = &"Grip"
 
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_y0pfa"]
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_8rol0"]
 filter_enabled = true
 filters = ["Armature/Skeleton3D:Little_Distal_L", "Armature/Skeleton3D:Little_Intermediate_L", "Armature/Skeleton3D:Little_Metacarpal_L", "Armature/Skeleton3D:Little_Proximal_L", "Armature/Skeleton3D:Middle_Distal_L", "Armature/Skeleton3D:Middle_Intermediate_L", "Armature/Skeleton3D:Middle_Metacarpal_L", "Armature/Skeleton3D:Middle_Proximal_L", "Armature/Skeleton3D:Ring_Distal_L", "Armature/Skeleton3D:Ring_Intermediate_L", "Armature/Skeleton3D:Ring_Metacarpal_L", "Armature/Skeleton3D:Ring_Proximal_L", "Armature/Skeleton3D:Thumb_Distal_L", "Armature/Skeleton3D:Thumb_Metacarpal_L", "Armature/Skeleton3D:Thumb_Proximal_L", "Armature/Skeleton:Little_Distal_L", "Armature/Skeleton:Little_Intermediate_L", "Armature/Skeleton:Little_Proximal_L", "Armature/Skeleton:Middle_Distal_L", "Armature/Skeleton:Middle_Intermediate_L", "Armature/Skeleton:Middle_Proximal_L", "Armature/Skeleton:Ring_Distal_L", "Armature/Skeleton:Ring_Intermediate_L", "Armature/Skeleton:Ring_Proximal_L", "Armature/Skeleton:Thumb_Distal_L", "Armature/Skeleton:Thumb_Proximal_L"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_lvcy8"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ixqq3"]
 animation = &"Grip 5"
 
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_f8mj5"]
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_16u4i"]
 filter_enabled = true
 filters = ["Armature/Skeleton3D:Index_Distal_L", "Armature/Skeleton3D:Index_Intermediate_L", "Armature/Skeleton3D:Index_Metacarpal_L", "Armature/Skeleton3D:Index_Proximal_L", "Armature/Skeleton:Index_Distal_L", "Armature/Skeleton:Index_Intermediate_L", "Armature/Skeleton:Index_Proximal_L"]
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_4t8fi"]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_14i8c"]
 graph_offset = Vector2(-536, 11)
-nodes/ClosedHand1/node = SubResource("AnimationNodeAnimation_xhnds")
+nodes/ClosedHand1/node = SubResource("AnimationNodeAnimation_jbywv")
 nodes/ClosedHand1/position = Vector2(-600, 300)
-nodes/ClosedHand2/node = SubResource("AnimationNodeAnimation_3nj2l")
+nodes/ClosedHand2/node = SubResource("AnimationNodeAnimation_x00x3")
 nodes/ClosedHand2/position = Vector2(-360, 300)
-nodes/Grip/node = SubResource("AnimationNodeBlend2_y0pfa")
+nodes/Grip/node = SubResource("AnimationNodeBlend2_8rol0")
 nodes/Grip/position = Vector2(0, 20)
-nodes/OpenHand/node = SubResource("AnimationNodeAnimation_lvcy8")
+nodes/OpenHand/node = SubResource("AnimationNodeAnimation_ixqq3")
 nodes/OpenHand/position = Vector2(-600, 100)
-nodes/Trigger/node = SubResource("AnimationNodeBlend2_f8mj5")
+nodes/Trigger/node = SubResource("AnimationNodeBlend2_16u4i")
 nodes/Trigger/position = Vector2(-360, 20)
 node_connections = [&"Grip", 0, &"Trigger", &"Grip", 1, &"ClosedHand2", &"Trigger", 0, &"OpenHand", &"Trigger", 1, &"ClosedHand1", &"output", 0, &"Grip"]
 
@@ -195,36 +198,42 @@ _data = {
 "Thumb": ExtResource("80_von88")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f066k"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gpnqc"]
 animation = &"Grip"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_12hfs"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_auf4e"]
 animation = &"Grip"
 
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_m4kot"]
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_a74i2"]
 filter_enabled = true
 filters = ["Armature/Skeleton3D:Little_Distal_R", "Armature/Skeleton3D:Little_Intermediate_R", "Armature/Skeleton3D:Little_Metacarpal_R", "Armature/Skeleton3D:Little_Proximal_R", "Armature/Skeleton3D:Middle_Distal_R", "Armature/Skeleton3D:Middle_Intermediate_R", "Armature/Skeleton3D:Middle_Metacarpal_R", "Armature/Skeleton3D:Middle_Proximal_R", "Armature/Skeleton3D:Ring_Distal_R", "Armature/Skeleton3D:Ring_Intermediate_R", "Armature/Skeleton3D:Ring_Metacarpal_R", "Armature/Skeleton3D:Ring_Proximal_R", "Armature/Skeleton3D:Thumb_Distal_R", "Armature/Skeleton3D:Thumb_Metacarpal_R", "Armature/Skeleton3D:Thumb_Proximal_R", "Armature/Skeleton:Little_Distal_R", "Armature/Skeleton:Little_Intermediate_R", "Armature/Skeleton:Little_Proximal_R", "Armature/Skeleton:Middle_Distal_R", "Armature/Skeleton:Middle_Intermediate_R", "Armature/Skeleton:Middle_Proximal_R", "Armature/Skeleton:Ring_Distal_R", "Armature/Skeleton:Ring_Intermediate_R", "Armature/Skeleton:Ring_Proximal_R", "Armature/Skeleton:Thumb_Distal_R", "Armature/Skeleton:Thumb_Proximal_R"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_n5nxa"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_vg4ep"]
 animation = &"Grip 5"
 
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_ltv8j"]
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_7v476"]
 filter_enabled = true
 filters = ["Armature/Skeleton3D:Index_Distal_R", "Armature/Skeleton3D:Index_Intermediate_R", "Armature/Skeleton3D:Index_Metacarpal_R", "Armature/Skeleton3D:Index_Proximal_R", "Armature/Skeleton:Index_Distal_R", "Armature/Skeleton:Index_Intermediate_R", "Armature/Skeleton:Index_Proximal_R"]
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_e5bo1"]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_e72nd"]
 graph_offset = Vector2(-552.664, 107.301)
-nodes/ClosedHand1/node = SubResource("AnimationNodeAnimation_f066k")
+nodes/ClosedHand1/node = SubResource("AnimationNodeAnimation_gpnqc")
 nodes/ClosedHand1/position = Vector2(-600, 300)
-nodes/ClosedHand2/node = SubResource("AnimationNodeAnimation_12hfs")
+nodes/ClosedHand2/node = SubResource("AnimationNodeAnimation_auf4e")
 nodes/ClosedHand2/position = Vector2(-360, 300)
-nodes/Grip/node = SubResource("AnimationNodeBlend2_m4kot")
+nodes/Grip/node = SubResource("AnimationNodeBlend2_a74i2")
 nodes/Grip/position = Vector2(0, 40)
-nodes/OpenHand/node = SubResource("AnimationNodeAnimation_n5nxa")
+nodes/OpenHand/node = SubResource("AnimationNodeAnimation_vg4ep")
 nodes/OpenHand/position = Vector2(-600, 100)
-nodes/Trigger/node = SubResource("AnimationNodeBlend2_ltv8j")
+nodes/Trigger/node = SubResource("AnimationNodeBlend2_7v476")
 nodes/Trigger/position = Vector2(-360, 40)
 node_connections = [&"Grip", 0, &"Trigger", &"Grip", 1, &"ClosedHand2", &"Trigger", 0, &"OpenHand", &"Trigger", 1, &"ClosedHand1", &"output", 0, &"Grip"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_eqqv7"]
+load_path = "res://.godot/imported/return to main menu.png-0b17f9c9827dd9221f334e41b38e1ecb.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2ccee"]
+load_path = "res://.godot/imported/return to main menu.png-0b17f9c9827dd9221f334e41b38e1ecb.s3tc.ctex"
 
 [node name="ClimbingGame" type="Node3D"]
 script = ExtResource("1_um23e")
@@ -282,7 +291,7 @@ root_node = NodePath("../Hand_Nails_low_L")
 libraries = {
 "": SubResource("AnimationLibrary_kw48d")
 }
-tree_root = SubResource("AnimationNodeBlendTree_4t8fi")
+tree_root = SubResource("AnimationNodeBlendTree_14i8c")
 
 [node name="FunctionPickup" parent="XROrigin3D/LeftHand" instance=ExtResource("41_mjvqv")]
 grab_distance = 0.1
@@ -341,7 +350,7 @@ root_node = NodePath("../Hand_Nails_low_R")
 libraries = {
 "": SubResource("AnimationLibrary_reqae")
 }
-tree_root = SubResource("AnimationNodeBlendTree_e5bo1")
+tree_root = SubResource("AnimationNodeBlendTree_e72nd")
 
 [node name="FunctionPickup" parent="XROrigin3D/RightHand" instance=ExtResource("41_mjvqv")]
 grab_distance = 0.1
@@ -360,20 +369,213 @@ physics = ExtResource("83_efe7i")
 
 [node name="BasicMap" parent="." instance=ExtResource("1_exo1q")]
 
-[node name="ClimbingBar" parent="." instance=ExtResource("85_x7g0n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.918533, -2.38652)
+[node name="Climbing_cliff" parent="." instance=ExtResource("85_bmhfp")]
+transform = Transform3D(0.857167, 0, 0.515038, 0, 1, 0, -0.515038, 0, 0.857167, 0, 0, -22)
 
-[node name="ClimbingBar2" parent="." instance=ExtResource("85_x7g0n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38511, -2.38652)
+[node name="Climbling_Bars" type="Node3D" parent="."]
 
-[node name="ClimbingBar3" parent="." instance=ExtResource("85_x7g0n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.84171, -2.38652)
+[node name="ClimbingBar" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.157099, 0.918533, -13.0834)
 
-[node name="ClimbingBar4" parent="." instance=ExtResource("85_x7g0n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.19087, -2.38652)
+[node name="ClimbingBar2" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.19623, -13.2588)
 
-[node name="ClimbingBar5" parent="." instance=ExtResource("85_x7g0n")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.57621, -2.38652)
+[node name="ClimbingBar3" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.54088, -13.2588)
+
+[node name="ClimbingBar4" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.87045, -13.2588)
+
+[node name="ClimbingBar5" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.499553, 2.11401, -13.2588)
+
+[node name="ClimbingBar6" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.05469, 2.11401, -13.2588)
+
+[node name="ClimbingBar7" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65388, 2.11401, -13.2588)
+
+[node name="ClimbingBar8" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65388, 2.35314, -13.2588)
+
+[node name="ClimbingBar9" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65388, 2.63271, -13.2588)
+
+[node name="ClimbingBar10" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65388, 2.85564, -13.2588)
+
+[node name="ClimbingBar11" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65388, 3.15333, -13.2588)
+
+[node name="ClimbingBar12" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.65388, 3.38174, -13.2588)
+
+[node name="ClimbingBar13" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.06082, 3.65129, -13.2588)
+
+[node name="ClimbingBar14" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55656, 3.90938, -13.2588)
+
+[node name="ClimbingBar15" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55656, 4.24302, -13.2588)
+
+[node name="ClimbingBar16" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55656, 4.56919, -13.2588)
+
+[node name="ClimbingBar17" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55656, 4.94446, -13.2588)
+
+[node name="ClimbingBar18" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55656, 5.30529, -13.2588)
+
+[node name="ClimbingBar19" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.55656, 5.68975, -13.2588)
+
+[node name="ClimbingBar20" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.983635, 5.84712, -13.2588)
+
+[node name="ClimbingBar21" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.371316, 6.1048, -13.3979)
+
+[node name="ClimbingBar22" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.190665, 6.36761, -13.4055)
+
+[node name="ClimbingBar23" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.758306, 6.63994, -13.453)
+
+[node name="ClimbingBar24" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.758306, 6.93358, -13.4556)
+
+[node name="ClimbingBar25" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.758306, 7.29265, -13.4347)
+
+[node name="ClimbingBar26" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.176105, 7.29265, -13.5843)
+
+[node name="ClimbingBar27" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400561, 7.29265, -13.4948)
+
+[node name="ClimbingBar28" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400561, 7.59638, -13.5103)
+
+[node name="ClimbingBar29" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400561, 7.92898, -13.7168)
+
+[node name="ClimbingBar30" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400561, 8.25384, -13.6597)
+
+[node name="ClimbingBar31" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400561, 8.64561, -13.6548)
+
+[node name="ClimbingBar32" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400561, 8.99268, -13.6306)
+
+[node name="ClimbingBar33" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400561, 9.33873, -13.751)
+
+[node name="ClimbingBar34" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400561, 9.86796, -13.8012)
+
+[node name="ClimbingBar35" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.400561, 10.447, -13.7964)
+
+[node name="ClimbingBar36" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20338, 10.447, -13.8441)
+
+[node name="ClimbingBar37" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.20338, 10.9211, -13.7523)
+
+[node name="ClimbingBar38" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.04451, 10.9211, -13.7424)
+
+[node name="ClimbingBar39" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77367, 10.9211, -13.8176)
+
+[node name="ClimbingBar40" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77367, 11.4113, -13.9506)
+
+[node name="ClimbingBar41" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77367, 11.9892, -13.9109)
+
+[node name="ClimbingBar42" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77367, 12.5249, -13.9746)
+
+[node name="ClimbingBar43" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77367, 13.0564, -13.988)
+
+[node name="ClimbingBar44" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77367, 13.545, -13.9997)
+
+[node name="ClimbingBar45" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.77367, 14.088, -14.1142)
+
+[node name="ClimbingBar46" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89374, 14.088, -14.1199)
+
+[node name="ClimbingBar47" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.89374, 14.6282, -14.1004)
+
+[node name="ClimbingBar48" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.08444, 14.6282, -14.115)
+
+[node name="ClimbingBar49" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.466433, 15.0462, -14.2224)
+
+[node name="ClimbingBar50" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215216, 15.45, -14.1483)
+
+[node name="ClimbingBar51" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215216, 16.0011, -14.2196)
+
+[node name="ClimbingBar52" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215216, 16.5151, -14.2624)
+
+[node name="ClimbingBar53" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215216, 17.2058, -14.2862)
+
+[node name="ClimbingBar54" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215216, 17.7303, -14.3074)
+
+[node name="ClimbingBar55" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215216, 18.1951, -14.3823)
+
+[node name="ClimbingBar56" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215216, 18.6284, -14.4586)
+
+[node name="ClimbingBar57" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215216, 19.1695, -14.5758)
+
+[node name="ClimbingBar58" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215216, 19.6022, -14.755)
+
+[node name="ClimbingBar59" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.215216, 19.933, -14.755)
+
+[node name="ClimbingBar60" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 0.919135, 0.393942, 0, -0.393942, 0.919135, -0.215216, 20.1883, -14.755)
+
+[node name="ClimbingBar61" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 0.529919, 0.848048, 0, -0.848048, 0.529919, -0.215216, 20.4765, -14.9492)
+
+[node name="ClimbingBar62" parent="Climbling_Bars" instance=ExtResource("85_x7g0n")]
+transform = Transform3D(1, 0, 0, 0, 0.0697565, 0.997564, 0, -0.997564, 0.0697565, -0.215216, 20.5225, -15.2346)
+
+[node name="Teleport" parent="." instance=ExtResource("87_ve7cf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 19.9897, -22.9017)
+title = SubResource("CompressedTexture2D_eqqv7")
+spawn_point_name = ""
+spawn_point_position = Vector3(0, 0, 0)
+spawn_point_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Finish_Button" parent="." instance=ExtResource("88_o8l46")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 20.2786, -17.7783)
+
+[node name="Teleport2" parent="." instance=ExtResource("87_ve7cf")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.80607)
+title = SubResource("CompressedTexture2D_2ccee")
+spawn_point_name = ""
+spawn_point_position = Vector3(0, 0, 0)
+spawn_point_transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [editable path="XROrigin3D/LeftHand/LeftHand"]
 [editable path="XROrigin3D/LeftHand/LeftHand/Hand_Nails_low_L"]

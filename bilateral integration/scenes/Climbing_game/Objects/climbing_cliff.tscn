@@ -1,0 +1,25 @@
+[gd_scene load_steps=4 format=3 uid="uid://0p8jq7vbpxlo"]
+
+[ext_resource type="Material" uid="uid://xu1mdplp6444" path="res://assets/wahooney.itch.io/brown_grid_triplanar.tres" id="1_5kt61"]
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_gjbdp"]
+top_radius = 8.0
+bottom_radius = 10.0
+height = 20.0
+radial_segments = 6
+rings = 0
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_8qph3"]
+points = PackedVector3Array(0, -10, 10, -8.66025, -10, 4.99804, 8.66025, -10, 5, 0, 10, 7.99922, -6.92922, 10, 3.99961, -8.66025, -10, -5, 8.65856, -10, -5.00196, 6.92753, 10, -4.00157, 6.92753, 10, 3.99961, -6.92922, 10, -4.00157, 0, -10, -10, 0, 10, -8.00117)
+
+[node name="Climbing_cliff" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0205269)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+mesh = SubResource("CylinderMesh_gjbdp")
+surface_material_override/0 = ExtResource("1_5kt61")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 0)
+shape = SubResource("ConvexPolygonShape3D_8qph3")

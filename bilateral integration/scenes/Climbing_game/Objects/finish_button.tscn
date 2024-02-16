@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://bs1jbxhdn1fj3"]
+
+[ext_resource type="PackedScene" uid="uid://dbv1hvxufc1al" path="res://assets/meshes/interactables/push_button.tscn" id="1_bgeh1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tchkm"]
+albedo_color = Color(0, 1, 1, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uc1mn"]
+size = Vector3(0.2, 0.5, 0.2)
+
+[node name="Finish_Button" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+material_override = SubResource("StandardMaterial3D_tchkm")
+mesh = SubResource("BoxMesh_uc1mn")
+
+[node name="PushButton" parent="." instance=ExtResource("1_bgeh1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.278046, 0)
