@@ -271,7 +271,7 @@ visible = false
 visible = false
 
 [node name="Cube_001" parent="CLASSROOM" index="29"]
-transform = Transform3D(0, 0, 1.28767, 0, 0.0741374, 0, -2.53098, 0, 0, 8.52466, 1.07965, -13.4956)
+transform = Transform3D(0, 0, 1.28767, 0, 0.0741374, 0, -2.53098, 0, 0, 8.6997, 1.07965, -13.4956)
 
 [node name="Plane_003" type="MeshInstance3D" parent="CLASSROOM"]
 transform = Transform3D(0.00083793, -20, 0, 8, 0.00209483, 0, 0, 0, 20, -7.57735, 7.02866, 0)
