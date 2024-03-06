@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://rypqa6qcv0st"]
+[gd_scene load_steps=12 format=3 uid="uid://rypqa6qcv0st"]
 
 [ext_resource type="Environment" uid="uid://c75hc5t2ml5re" path="res://demo_env.tres" id="1_d6n2l"]
-[ext_resource type="Material" path="res://assets/wahooney.itch.io/green_grid_triplanar.tres" id="2"]
+[ext_resource type="Material" uid="uid://dw15hsuukkwpr" path="res://assets/wahooney.itch.io/green_grid_triplanar.tres" id="2"]
+[ext_resource type="Texture2D" uid="uid://kxjb574s68s6" path="res://assets/Wall_texture.jpg" id="3_dc4eu"]
 
 [sub_resource type="QuadMesh" id="7"]
 size = Vector2(96, 96)
@@ -12,8 +13,21 @@ size = Vector3(100, 2, 100)
 [sub_resource type="QuadMesh" id="8"]
 size = Vector2(96, 16)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_08mtk"]
+diffuse_mode = 1
+albedo_texture = ExtResource("3_dc4eu")
+
 [sub_resource type="BoxShape3D" id="4"]
 size = Vector3(100, 16, 2)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_v7dc1"]
+albedo_texture = ExtResource("3_dc4eu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2j8w6"]
+albedo_texture = ExtResource("3_dc4eu")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rtbkb"]
+albedo_texture = ExtResource("3_dc4eu")
 
 [node name="BasicMap" type="Node3D"]
 
@@ -41,8 +55,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -48)
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Wall1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 mesh = SubResource("8")
-skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2")
+surface_material_override/0 = SubResource("StandardMaterial3D_08mtk")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -1)
@@ -55,7 +68,7 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 48, 0,
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 mesh = SubResource("8")
 skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2")
+surface_material_override/0 = SubResource("StandardMaterial3D_v7dc1")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -1)
@@ -68,7 +81,7 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 mesh = SubResource("8")
 skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2")
+surface_material_override/0 = SubResource("StandardMaterial3D_2j8w6")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -1)
@@ -81,7 +94,7 @@ transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, -48, 0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, 0)
 mesh = SubResource("8")
 skeleton = NodePath("../..")
-surface_material_override/0 = ExtResource("2")
+surface_material_override/0 = SubResource("StandardMaterial3D_rtbkb")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Wall4"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 8, -1)
