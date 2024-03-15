@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://chqc7kdbwrlob"]
+
+[ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="1_qdfpd"]
+[ext_resource type="PackedScene" uid="uid://ylt0qsqm77jo" path="res://scenes/climbing_gliding_demo/objects/WellDoneText.tscn" id="2_n8psp"]
+[ext_resource type="Material" uid="uid://cliyhjfvy8pfd" path="res://assets/maps/holodeck/materials/base.material" id="3_xpa50"]
+
+[sub_resource type="BoxMesh" id="1"]
+material = ExtResource("3_xpa50")
+size = Vector3(4.2, 3, 0.1)
+
+[node name="Welldone" type="Node3D"]
+
+[node name="Viewport2Din3D" parent="." instance=ExtResource("1_qdfpd")]
+screen_size = Vector2(4, 2.8)
+collision_layer = 0
+scene = ExtResource("2_n8psp")
+viewport_size = Vector2(400, 280)
+update_mode = 0
+unshaded = true
+
+[node name="MeshInstance" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.1)
+mesh = SubResource("1")

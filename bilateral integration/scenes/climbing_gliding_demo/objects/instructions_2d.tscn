@@ -22,19 +22,19 @@ offset_right = 390.0
 offset_bottom = 270.0
 theme_override_constants/line_separation = -3
 theme_override_font_sizes/normal_font_size = 12
-text = "Climbing & Gliding Demo
+text = "Flappy bird game
 
-This scene demonstrates climbing, gliding, and wind using the following controls:
+Controls:
  > Left Controller:
-   - Direct Movement: U/D/L/R Joystick
-   - Climb: Grip
+   - Direct Movement: Up/Down/Left/Right Joystick
+   - Climb: Grip (hold)
    - Jump: A/X Button
  > Right Controller:
-   - Direct Movement: U/D Joystick
-   - Turning: L/R Joystick
-   - Climbing: Grip
+   - Direct Movement: Up/Down Joystick
+   - Turning: Left/Right Joystick
+   - Climbing: Grip (hold)
    - Jumping: A/X Button
 
-Holding the arms in a T-Pose triggers gliding.
-Rolling the arms triggers turning.
-Flapping the arms triggers vertical impulse."
+Hold your arms in a T-pose to start gliding through the obstacles.
+Tilt your arms like a plane to turn left or right.
+Flap your arms like a bird to fly upwards."
