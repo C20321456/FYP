@@ -1,8 +1,8 @@
 [gd_resource type="StandardMaterial3D" load_steps=2 format=3 uid="uid://xu1mdplp6444"]
 
-[ext_resource type="Texture2D" uid="uid://dbpoln2j3mgck" path="res://assets/metallic-texture-background.jpg" id="1_riswc"]
+[ext_resource type="Texture2D" uid="uid://dqk3eeewd1joe" path="res://assets/WoodStick.jpg" id="1_mc68w"]
 
 [resource]
-albedo_texture = ExtResource("1_riswc")
+albedo_texture = ExtResource("1_mc68w")
 uv1_scale = Vector3(0.5, 0.5, 0.5)
 uv1_triplanar = true
