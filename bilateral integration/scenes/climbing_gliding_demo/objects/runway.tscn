@@ -5,8 +5,8 @@
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_l10t8"]
 points = PackedVector3Array(-66.2519, -19.5219, -19.5219, -66.2519, 19.5213, -19.5219, 66.2389, -19.5219, -19.5219, -66.2519, -19.5219, 19.5219, -66.2519, 19.5213, 19.5219, 66.2389, 19.5213, -19.5219, 66.2389, -19.5219, 19.5219, 66.2389, 19.5213, 19.5219)
 
-[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wdywe"]
-points = PackedVector3Array(-88.2771, -413.398, -88.2771, -88.2771, -413.398, 88.2772, -88.2771, 413.398, -88.2771, 88.2772, -413.398, -88.2771, 88.2772, -413.398, 88.2772, -88.2771, 413.398, 88.2772, 88.2772, 413.398, -88.2771, 88.2772, 413.398, 88.2772)
+[sub_resource type="BoxShape3D" id="BoxShape3D_4jr3i"]
+size = Vector3(174.499, 831.692, 0.001)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_md7wn"]
 points = PackedVector3Array(-40.8139, -26.2116, -26.2116, -40.8139, 26.2108, -26.2116, 40.8127, -26.2116, -26.2116, -40.8139, -26.2116, 26.2065, -40.8139, 26.2108, 26.2065, 40.8127, 26.2108, -26.2116, 40.8127, -26.2116, 26.2065, 40.8127, 26.2108, 26.2065)
@@ -25,17 +25,17 @@ transform = Transform3D(0.05, 0, 0, 0, 0.05, 0, 0, 0, 0.05, 0, 0, 0)
 [node name="CollisionShape3D" type="CollisionShape3D" parent="root/node_id292/Mesh16" index="0"]
 shape = SubResource("ConvexPolygonShape3D_l10t8")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="root/node_id292/Mesh51" index="0"]
-shape = SubResource("ConvexPolygonShape3D_wdywe")
+[node name="StaticBody3D" type="StaticBody3D" parent="root/node_id292/Mesh51" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="root/node_id292/Mesh51/StaticBody3D" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.38455, 0.77301, -0.499512)
+shape = SubResource("BoxShape3D_4jr3i")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="root/node_id292/Mesh53" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_md7wn")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="root/node_id292/Mesh54" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_hxtkf")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="root/node_id292/Mesh55" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("ConvexPolygonShape3D_syg44")

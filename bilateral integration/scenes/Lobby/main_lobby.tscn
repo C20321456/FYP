@@ -1,12 +1,15 @@
-[gd_scene load_steps=104 format=3 uid="uid://d10cial6cx3ku"]
+[gd_scene load_steps=110 format=3 uid="uid://d10cial6cx3ku"]
 
 [ext_resource type="Script" path="res://scenes/demo_scene_base.gd" id="1_2cqyx"]
 [ext_resource type="PackedScene" uid="uid://yij81pp2ttj3" path="res://assets/CLASSROOM.glb" id="1_mmfe2"]
 [ext_resource type="PackedScene" uid="uid://bq86r4yll8po" path="res://addons/godot-xr-tools/hands/scenes/lowpoly/left_fullglove_low.tscn" id="2_ch67d"]
+[ext_resource type="PackedScene" uid="uid://0u3fys7dvom3" path="res://scenes/Lobby/objects/class_room_seating.tscn" id="3_07mcx"]
 [ext_resource type="PackedScene" uid="uid://bjcxf427un2wp" path="res://addons/godot-xr-tools/player/poke/poke.tscn" id="3_53y76"]
 [ext_resource type="Animation" uid="uid://dgfeikrugfewi" path="res://addons/godot-xr-tools/hands/animations/left/Cup.res" id="4_aj1wy"]
 [ext_resource type="Animation" uid="uid://dlxa6f6hwurka" path="res://addons/godot-xr-tools/hands/animations/left/Default pose.res" id="5_5jf3c"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/hands/physics_hand.gd" id="5_jcluw"]
 [ext_resource type="Animation" uid="uid://plad1r85f7ws" path="res://addons/godot-xr-tools/hands/animations/left/Grip.res" id="6_8e1ie"]
+[ext_resource type="Script" path="res://addons/godot-xr-tools/hands/hand_physics_bone.gd" id="6_dp02j"]
 [ext_resource type="Animation" uid="uid://dqa0h82y3qn1t" path="res://addons/godot-xr-tools/hands/animations/left/Grip 1.res" id="7_x3w83"]
 [ext_resource type="Animation" uid="uid://di384xtde8ydf" path="res://addons/godot-xr-tools/hands/animations/left/Grip 2.res" id="8_smedr"]
 [ext_resource type="Animation" uid="uid://dd67rufxwj2u" path="res://addons/godot-xr-tools/hands/animations/left/Grip 3.res" id="9_5xyd8"]
@@ -45,6 +48,7 @@
 [ext_resource type="Material" uid="uid://bhiiya7ow6h8v" path="res://addons/godot-xr-tools/hands/materials/labglove.material" id="42_1nv1s"]
 [ext_resource type="PackedScene" uid="uid://cqhw276realc" path="res://addons/godot-xr-tools/functions/function_pointer.tscn" id="42_xywkl"]
 [ext_resource type="Animation" uid="uid://do01jton6rk42" path="res://addons/godot-xr-tools/hands/animations/right/Cup.res" id="43_se1dv"]
+[ext_resource type="PackedScene" uid="uid://c2q5phg8w08o" path="res://addons/godot-xr-tools/functions/movement_jump.tscn" id="44_k3ptv"]
 [ext_resource type="Animation" uid="uid://ky28birj4su6" path="res://addons/godot-xr-tools/hands/animations/right/Default pose.res" id="44_oi0mm"]
 [ext_resource type="Animation" uid="uid://ccds2u22gbxn7" path="res://addons/godot-xr-tools/hands/animations/right/Grip.res" id="45_a5xcv"]
 [ext_resource type="Animation" uid="uid://daqddcrbpam0c" path="res://addons/godot-xr-tools/hands/animations/right/Grip 1.res" id="46_0im3l"]
@@ -84,6 +88,8 @@
 [ext_resource type="PackedScene" uid="uid://clujaf3u776a3" path="res://addons/godot-xr-tools/objects/viewport_2d_in_3d.tscn" id="82_xwpru"]
 [ext_resource type="PackedScene" uid="uid://3a6wjr3a13vd" path="res://assets/meshes/teleport/teleport.tscn" id="83_c81ud"]
 [ext_resource type="Texture2D" uid="uid://d3epm85d4s28f" path="res://scenes/climbing_gliding_demo/climbing_gliding_demo.png" id="84_e7o81"]
+[ext_resource type="PackedScene" uid="uid://bs1jbxhdn1fj3" path="res://scenes/Climbing_game/Objects/finish_button.tscn" id="87_smoha"]
+[ext_resource type="Texture2D" uid="uid://bv0r0klv2u7tl" path="res://scenes/interactables_demo/interactables_demo.png" id="88_nthhf"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_2nrqr"]
 
@@ -168,34 +174,34 @@ _data = {
 "Thumb": ExtResource("38_isywo")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_qj1kk"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b818m"]
 animation = &"Grip"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2qyb6"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_msg2s"]
 animation = &"Grip"
 
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_aojbi"]
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_q2l4f"]
 filter_enabled = true
 filters = ["Armature/Skeleton3D:Little_Distal_L", "Armature/Skeleton3D:Little_Intermediate_L", "Armature/Skeleton3D:Little_Metacarpal_L", "Armature/Skeleton3D:Little_Proximal_L", "Armature/Skeleton3D:Middle_Distal_L", "Armature/Skeleton3D:Middle_Intermediate_L", "Armature/Skeleton3D:Middle_Metacarpal_L", "Armature/Skeleton3D:Middle_Proximal_L", "Armature/Skeleton3D:Ring_Distal_L", "Armature/Skeleton3D:Ring_Intermediate_L", "Armature/Skeleton3D:Ring_Metacarpal_L", "Armature/Skeleton3D:Ring_Proximal_L", "Armature/Skeleton3D:Thumb_Distal_L", "Armature/Skeleton3D:Thumb_Metacarpal_L", "Armature/Skeleton3D:Thumb_Proximal_L", "Armature/Skeleton:Little_Distal_L", "Armature/Skeleton:Little_Intermediate_L", "Armature/Skeleton:Little_Proximal_L", "Armature/Skeleton:Middle_Distal_L", "Armature/Skeleton:Middle_Intermediate_L", "Armature/Skeleton:Middle_Proximal_L", "Armature/Skeleton:Ring_Distal_L", "Armature/Skeleton:Ring_Intermediate_L", "Armature/Skeleton:Ring_Proximal_L", "Armature/Skeleton:Thumb_Distal_L", "Armature/Skeleton:Thumb_Proximal_L"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_la2iv"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_8715j"]
 animation = &"Grip 5"
 
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_dkuri"]
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_qgrva"]
 filter_enabled = true
 filters = ["Armature/Skeleton3D:Index_Distal_L", "Armature/Skeleton3D:Index_Intermediate_L", "Armature/Skeleton3D:Index_Metacarpal_L", "Armature/Skeleton3D:Index_Proximal_L", "Armature/Skeleton:Index_Distal_L", "Armature/Skeleton:Index_Intermediate_L", "Armature/Skeleton:Index_Proximal_L"]
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_uhk10"]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_xb8vd"]
 graph_offset = Vector2(-536, 11)
-nodes/ClosedHand1/node = SubResource("AnimationNodeAnimation_qj1kk")
+nodes/ClosedHand1/node = SubResource("AnimationNodeAnimation_b818m")
 nodes/ClosedHand1/position = Vector2(-600, 300)
-nodes/ClosedHand2/node = SubResource("AnimationNodeAnimation_2qyb6")
+nodes/ClosedHand2/node = SubResource("AnimationNodeAnimation_msg2s")
 nodes/ClosedHand2/position = Vector2(-360, 300)
-nodes/Grip/node = SubResource("AnimationNodeBlend2_aojbi")
+nodes/Grip/node = SubResource("AnimationNodeBlend2_q2l4f")
 nodes/Grip/position = Vector2(0, 20)
-nodes/OpenHand/node = SubResource("AnimationNodeAnimation_la2iv")
+nodes/OpenHand/node = SubResource("AnimationNodeAnimation_8715j")
 nodes/OpenHand/position = Vector2(-600, 100)
-nodes/Trigger/node = SubResource("AnimationNodeBlend2_dkuri")
+nodes/Trigger/node = SubResource("AnimationNodeBlend2_qgrva")
 nodes/Trigger/position = Vector2(-360, 20)
 node_connections = [&"Grip", 0, &"Trigger", &"Grip", 1, &"ClosedHand2", &"Trigger", 0, &"OpenHand", &"Trigger", 1, &"ClosedHand1", &"output", 0, &"Grip"]
 
@@ -238,34 +244,34 @@ _data = {
 "Thumb": ExtResource("77_0mlq5")
 }
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_sgiv6"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_o46yx"]
 animation = &"Grip"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_to30j"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_enjg6"]
 animation = &"Grip"
 
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_83wa3"]
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_m4tw0"]
 filter_enabled = true
 filters = ["Armature/Skeleton3D:Little_Distal_R", "Armature/Skeleton3D:Little_Intermediate_R", "Armature/Skeleton3D:Little_Metacarpal_R", "Armature/Skeleton3D:Little_Proximal_R", "Armature/Skeleton3D:Middle_Distal_R", "Armature/Skeleton3D:Middle_Intermediate_R", "Armature/Skeleton3D:Middle_Metacarpal_R", "Armature/Skeleton3D:Middle_Proximal_R", "Armature/Skeleton3D:Ring_Distal_R", "Armature/Skeleton3D:Ring_Intermediate_R", "Armature/Skeleton3D:Ring_Metacarpal_R", "Armature/Skeleton3D:Ring_Proximal_R", "Armature/Skeleton3D:Thumb_Distal_R", "Armature/Skeleton3D:Thumb_Metacarpal_R", "Armature/Skeleton3D:Thumb_Proximal_R", "Armature/Skeleton:Little_Distal_R", "Armature/Skeleton:Little_Intermediate_R", "Armature/Skeleton:Little_Proximal_R", "Armature/Skeleton:Middle_Distal_R", "Armature/Skeleton:Middle_Intermediate_R", "Armature/Skeleton:Middle_Proximal_R", "Armature/Skeleton:Ring_Distal_R", "Armature/Skeleton:Ring_Intermediate_R", "Armature/Skeleton:Ring_Proximal_R", "Armature/Skeleton:Thumb_Distal_R", "Armature/Skeleton:Thumb_Proximal_R"]
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_jy3ow"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_t45nx"]
 animation = &"Grip 5"
 
-[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_j5ite"]
+[sub_resource type="AnimationNodeBlend2" id="AnimationNodeBlend2_q746f"]
 filter_enabled = true
 filters = ["Armature/Skeleton3D:Index_Distal_R", "Armature/Skeleton3D:Index_Intermediate_R", "Armature/Skeleton3D:Index_Metacarpal_R", "Armature/Skeleton3D:Index_Proximal_R", "Armature/Skeleton:Index_Distal_R", "Armature/Skeleton:Index_Intermediate_R", "Armature/Skeleton:Index_Proximal_R"]
 
-[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_y4ice"]
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_aavym"]
 graph_offset = Vector2(-552.664, 107.301)
-nodes/ClosedHand1/node = SubResource("AnimationNodeAnimation_sgiv6")
+nodes/ClosedHand1/node = SubResource("AnimationNodeAnimation_o46yx")
 nodes/ClosedHand1/position = Vector2(-600, 300)
-nodes/ClosedHand2/node = SubResource("AnimationNodeAnimation_to30j")
+nodes/ClosedHand2/node = SubResource("AnimationNodeAnimation_enjg6")
 nodes/ClosedHand2/position = Vector2(-360, 300)
-nodes/Grip/node = SubResource("AnimationNodeBlend2_83wa3")
+nodes/Grip/node = SubResource("AnimationNodeBlend2_m4tw0")
 nodes/Grip/position = Vector2(0, 40)
-nodes/OpenHand/node = SubResource("AnimationNodeAnimation_jy3ow")
+nodes/OpenHand/node = SubResource("AnimationNodeAnimation_t45nx")
 nodes/OpenHand/position = Vector2(-600, 100)
-nodes/Trigger/node = SubResource("AnimationNodeBlend2_j5ite")
+nodes/Trigger/node = SubResource("AnimationNodeBlend2_q746f")
 nodes/Trigger/position = Vector2(-360, 40)
 node_connections = [&"Grip", 0, &"Trigger", &"Grip", 1, &"ClosedHand2", &"Trigger", 0, &"OpenHand", &"Trigger", 1, &"ClosedHand1", &"output", 0, &"Grip"]
 
@@ -288,6 +294,7 @@ visible = false
 
 [node name="Cube_001" parent="CLASSROOM" index="29"]
 transform = Transform3D(-1.10632e-07, 0, 1.28767, 0, 0.0741374, 0, -2.53098, 0, -5.6286e-08, 10.1597, 1.07965, -13.4956)
+visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="CLASSROOM/Plane_001" index="0"]
 physics_material_override = SubResource("PhysicsMaterial_2nrqr")
@@ -301,13 +308,106 @@ transform = Transform3D(0.000858878, -20, 0, 8.2, 0.00209483, 0, 0, 0, 20, -7.57
 mesh = SubResource("ArrayMesh_w63vt")
 skeleton = NodePath("")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="CLASSROOM"]
+[node name="BackLight" type="DirectionalLight3D" parent="CLASSROOM"]
 transform = Transform3D(0.70173, -0.00468777, -0.712427, 0.712443, 0.00461729, 0.701715, 0, -0.999978, 0.00657986, -6.98231, 14.5568, 0)
+visible = false
 sky_mode = 1
 
-[node name="DirectionalLight3D2" type="DirectionalLight3D" parent="CLASSROOM"]
+[node name="FrontLight" type="DirectionalLight3D" parent="CLASSROOM"]
 transform = Transform3D(0.696389, 0.00472213, 0.717649, -0.717665, 0.00458214, 0.696374, -2.01574e-10, -0.999978, 0.00657986, 30.4683, 14.5568, 0)
+visible = false
 sky_mode = 1
+
+[node name="Chairs+desk Grouping" type="Node3D" parent="CLASSROOM"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.02739, 0)
+
+[node name="ClassRoom_seating" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7.49782)
+
+[node name="ClassRoom_seating2" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.88373, 0, 7.49782)
+
+[node name="ClassRoom_seating3" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.27286, 0, 7.49782)
+
+[node name="ClassRoom_seating4" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.497, 0, 7.49782)
+
+[node name="ClassRoom_seating5" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.8803, 0, 7.49782)
+
+[node name="ClassRoom_seating6" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.2792, 0, 7.49782)
+
+[node name="ClassRoom_seating7" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8274, 0, 7.49782)
+
+[node name="ClassRoom_seating8" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.8274, 0, 3.46102)
+
+[node name="ClassRoom_seating9" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.3082, 0, 3.46102)
+
+[node name="ClassRoom_seating10" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.0108, 0, 3.46102)
+
+[node name="ClassRoom_seating11" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.7982, 0, 3.46102)
+
+[node name="ClassRoom_seating12" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.41629, 0, 3.46102)
+
+[node name="ClassRoom_seating13" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.08747, 0, 3.46102)
+
+[node name="ClassRoom_seating14" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0873256, 0, 3.46102)
+
+[node name="ClassRoom_seating15" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0873256, 0, -5.34685)
+
+[node name="ClassRoom_seating16" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.47649, 0, -5.34685)
+
+[node name="ClassRoom_seating17" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.92874, 0, -5.34685)
+
+[node name="ClassRoom_seating18" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.3286, 0, -5.34685)
+
+[node name="ClassRoom_seating19" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.6606, 0, -5.34685)
+
+[node name="ClassRoom_seating20" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.7503, 0, -5.34685)
+
+[node name="ClassRoom_seating21" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2432, 0, -5.34685)
+
+[node name="ClassRoom_seating22" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 21.2432, 0, -9.39235)
+
+[node name="ClassRoom_seating23" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 17.9528, 0, -9.39235)
+
+[node name="ClassRoom_seating24" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 14.9858, 0, -9.39235)
+
+[node name="ClassRoom_seating25" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.6346, 0, -9.39235)
+
+[node name="ClassRoom_seating26" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.08188, 0, -9.39235)
+
+[node name="ClassRoom_seating27" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.77716, 0, -9.39235)
+
+[node name="ClassRoom_seating28" parent="CLASSROOM/Chairs+desk Grouping" instance=ExtResource("3_07mcx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0425758, 0, -9.39235)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="CLASSROOM"]
+transform = Transform3D(-0.999893, -0.0146602, 0, 0.0146602, -0.999893, 0, 0, 0, 1, 14.3632, 6.32754, 0)
+omni_range = 22.515
 
 [node name="XROrigin3D" type="XROrigin3D" parent="."]
 transform = Transform3D(0.0414746, 0, -0.99914, 0, 1, 0, 0.99914, 0, 0.0414746, 0, 0, 0)
@@ -322,6 +422,12 @@ tracker = &"left_hand"
 pose = &"aim"
 
 [node name="LeftHand" parent="XROrigin3D/LeftHand" instance=ExtResource("2_ch67d")]
+script = ExtResource("5_jcluw")
+collision_layer = 131072
+margin = 0.004
+bone_group = ""
+hand_blend_tree = null
+default_pose = null
 
 [node name="Skeleton3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature" index="0"]
 bones/1/rotation = Quaternion(0.323537, -2.56577e-05, -0.0272204, 0.945824)
@@ -344,7 +450,150 @@ bones/21/rotation = Quaternion(-0.0625182, -0.00022572, -0.115393, 0.991351)
 bones/22/rotation = Quaternion(0.0585786, 0.0216483, -0.269905, 0.96086)
 bones/23/rotation = Quaternion(0.00687177, -0.00357275, -0.211953, 0.977249)
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="1"]
+[node name="BoneRoot" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, -1.83077e-05, 1.52659e-08, 1.52668e-08, 0.00166774, 0.999999, -1.83077e-05, -0.999999, 0.00166774, 3.86425e-08, -1.86975e-05, 0.0271756)
+bone_name = "Wrist_L"
+bone_idx = 0
+script = ExtResource("6_dp02j")
+width_ratio = 0.8
+
+[node name="BoneThumbMetacarpal" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.998519, 0.0514604, -0.0176509, -0.017651, 0.613335, 0.789626, 0.0514604, -0.788145, 0.613335, 0.00999954, 0.0200266, 3.59323e-05)
+bone_name = "Thumb_Metacarpal_L"
+bone_idx = 1
+script = ExtResource("6_dp02j")
+length = 0.05
+
+[node name="BoneThumbProximal" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="3"]
+transform = Transform3D(0.921479, 0.383958, -0.0587628, -0.124052, 0.434264, 0.892203, 0.368087, -0.814856, 0.447796, 0.012311, 0.0475754, -0.0353648)
+bone_name = "Thumb_Proximal_L"
+bone_idx = 2
+script = ExtResource("6_dp02j")
+
+[node name="BoneThumbDistal" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="4"]
+transform = Transform3D(0.930159, 0.366844, 0.0151708, -0.154037, 0.352396, 0.923087, 0.333283, -0.860954, 0.384292, 0.028494, 0.0658787, -0.0697092)
+bone_name = "Thumb_Distal_L"
+bone_idx = 3
+script = ExtResource("6_dp02j")
+length = 0.02
+
+[node name="BoneIndexMetacarpal" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="5"]
+transform = Transform3D(0.999165, 0.0336562, -0.0231681, 0.0231985, -0.00051113, 0.999731, 0.0336353, -0.999433, -0.00129147, -0.0100005, 0.0224317, 3.59286e-05)
+bone_name = "Index_Metacarpal_L"
+bone_idx = 5
+script = ExtResource("6_dp02j")
+length = 0.08
+width_ratio = 0.2
+
+[node name="BoneIndexProximal" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="6"]
+transform = Transform3D(0.997821, 0.0419384, -0.0509326, 0.0413169, 0.204661, 0.97796, 0.0514381, -0.977934, 0.202483, -0.00729559, 0.0223907, -0.0802861)
+bone_name = "Index_Proximal_L"
+bone_idx = 6
+script = ExtResource("6_dp02j")
+
+[node name="BoneIndexMiddle" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="7"]
+transform = Transform3D(0.759851, 0.644453, -0.0854741, -0.040588, 0.178251, 0.983148, 0.648829, -0.743577, 0.161601, -0.00569705, 0.0301916, -0.117561)
+bone_name = "Index_Intermediate_L"
+bone_idx = 7
+script = ExtResource("6_dp02j")
+length = 0.025
+bone_group = "IndexFinger"
+
+[node name="BoneIndexDistal" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="8"]
+transform = Transform3D(0.356468, 0.927111, -0.115741, -0.109286, 0.164404, 0.98032, 0.927894, -0.336804, 0.159925, 0.0145038, 0.035779, -0.140869)
+bone_name = "Index_Distal_L"
+bone_idx = 8
+script = ExtResource("6_dp02j")
+length = 0.02
+bone_group = "IndexFinger"
+
+[node name="BoneMiddleMetacarpal" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="9"]
+transform = Transform3D(0.999918, -0.0127165, -0.00125617, 0.000365489, -0.0698022, 0.997561, -0.0127732, -0.99748, -0.0697919, -0.0100005, 0.00355416, 3.59286e-05)
+bone_name = "Middle_Metacarpal_L"
+bone_idx = 10
+script = ExtResource("6_dp02j")
+length = 0.08
+width_ratio = 0.2
+
+[node name="BoneMiddleProximal" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="10"]
+transform = Transform3D(0.971345, 0.237654, -0.00293004, 0.0207339, -0.0724503, 0.997156, 0.236766, -0.968644, -0.0753018, -0.0110237, -0.00206236, -0.0802245)
+bone_name = "Middle_Proximal_L"
+bone_idx = 11
+script = ExtResource("6_dp02j")
+
+[node name="BoneMiddleMiddle" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="11"]
+transform = Transform3D(0.764922, 0.643161, -0.0351718, 0.0290327, 0.0201225, 0.999376, 0.643468, -0.765466, -0.00328059, -0.000328456, -0.00532286, -0.123817)
+bone_name = "Middle_Intermediate_L"
+bone_idx = 12
+script = ExtResource("6_dp02j")
+length = 0.025
+
+[node name="BoneMiddleDistal" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="12"]
+transform = Transform3D(0.297115, 0.95453, -0.0243818, 0.0374454, 0.0138673, 0.999202, 0.954107, -0.297791, -0.0316226, 0.0205207, -0.00467056, -0.148631)
+bone_name = "Middle_Distal_L"
+bone_idx = 13
+script = ExtResource("6_dp02j")
+length = 0.02
+
+[node name="BoneRingMetacarpal" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="13"]
+transform = Transform3D(0.998609, 0.047074, 0.0237409, -0.0169882, -0.138981, 0.990149, 0.0499098, -0.989175, -0.137988, -0.0100005, -0.0130734, 3.59304e-05)
+bone_name = "Ring_Metacarpal_L"
+bone_idx = 15
+script = ExtResource("6_dp02j")
+length = 0.07
+width_ratio = 0.2
+
+[node name="BoneRingProximal" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="14"]
+transform = Transform3D(0.982964, 0.181854, 0.0266582, 0.0109494, -0.202722, 0.979175, 0.183471, -0.962202, -0.20126, -0.00651963, -0.0233502, -0.0731075)
+bone_name = "Ring_Proximal_L"
+bone_idx = 16
+script = ExtResource("6_dp02j")
+length = 0.028
+
+[node name="BoneRingMiddle" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="15"]
+transform = Transform3D(0.772579, 0.634603, 0.0200164, 0.0794845, -0.127948, 0.98859, 0.629924, -0.762173, -0.149291, 0.000778393, -0.0314857, -0.111722)
+bone_name = "Ring_Intermediate_L"
+bone_idx = 17
+script = ExtResource("6_dp02j")
+length = 0.025
+
+[node name="BoneRingDistal" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="16"]
+transform = Transform3D(0.381387, 0.924068, 0.025339, 0.114105, -0.0742599, 0.990689, 0.917346, -0.374945, -0.133762, 0.0184188, -0.0350424, -0.132908)
+bone_name = "Ring_Distal_L"
+bone_idx = 18
+script = ExtResource("6_dp02j")
+length = 0.02
+
+[node name="BonePinkyMetacarpal" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="17"]
+transform = Transform3D(0.998969, 0.0165318, 0.0422887, -0.0385953, -0.181426, 0.982647, 0.0239172, -0.983265, -0.180601, -4.58211e-07, -0.0299734, 3.59304e-05)
+bone_name = "Little_Metacarpal_L"
+bone_idx = 20
+script = ExtResource("6_dp02j")
+length = 0.07
+width_ratio = 0.18
+
+[node name="BonePinkyProximal" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="18"]
+transform = Transform3D(0.969212, 0.239304, 0.0579745, 0.0185535, -0.305761, 0.951928, 0.245527, -0.921544, -0.300787, 0.00108587, -0.0418952, -0.0645756)
+bone_name = "Little_Proximal_L"
+bone_idx = 21
+script = ExtResource("6_dp02j")
+length = 0.02
+
+[node name="BonePinkyMiddle" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="19"]
+transform = Transform3D(0.699331, 0.713816, 0.0374602, 0.103947, -0.153407, 0.982681, 0.707199, -0.683325, -0.181481, 0.00901247, -0.0520231, -0.0951004)
+bone_name = "Little_Intermediate_L"
+bone_idx = 22
+script = ExtResource("6_dp02j")
+length = 0.015
+
+[node name="BonePinkyDistal" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="20"]
+transform = Transform3D(0.340891, 0.939844, 0.0220291, 0.162162, -0.081867, 0.983362, 0.926011, -0.331647, -0.180315, 0.0218786, -0.0547881, -0.107417)
+bone_name = "Little_Distal_L"
+bone_idx = 23
+script = ExtResource("6_dp02j")
+length = 0.015
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="XROrigin3D/LeftHand/LeftHand/Hand_low_L/Armature/Skeleton3D" index="21"]
 transform = Transform3D(0.54083, 0.840813, -0.0231736, -0.0826267, 0.0805243, 0.993322, 0.837064, -0.535303, 0.113023, 0.039902, 0.0402828, -0.150096)
 bone_name = "Index_Tip_L"
 bone_idx = 9
@@ -357,7 +606,7 @@ root_node = NodePath("../Hand_low_L")
 libraries = {
 "": SubResource("AnimationLibrary_kw48d")
 }
-tree_root = SubResource("AnimationNodeBlendTree_uhk10")
+tree_root = SubResource("AnimationNodeBlendTree_xb8vd")
 
 [node name="FunctionPoseDetector" parent="XROrigin3D/LeftHand" instance=ExtResource("39_1rt5c")]
 
@@ -368,12 +617,21 @@ strafe = true
 show_laser = 2
 laser_length = 1
 
+[node name="MovementJump" parent="XROrigin3D/LeftHand" instance=ExtResource("44_k3ptv")]
+jump_button_action = "ax_button"
+
 [node name="RightHand" type="XRController3D" parent="XROrigin3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.5, 1, -0.5)
 tracker = &"right_hand"
 pose = &"aim"
 
 [node name="RightHand" parent="XROrigin3D/RightHand" instance=ExtResource("41_t5md2")]
+script = ExtResource("5_jcluw")
+collision_layer = 131072
+margin = 0.004
+bone_group = ""
+hand_blend_tree = null
+default_pose = null
 
 [node name="Skeleton3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature" index="0"]
 bones/1/rotation = Quaternion(0.323537, 2.56577e-05, 0.0272204, 0.945824)
@@ -399,7 +657,150 @@ bones/23/rotation = Quaternion(0.00687177, 0.00357275, 0.211953, 0.977249)
 [node name="mesh_Hand_low_R" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="0"]
 surface_material_override/0 = ExtResource("42_1nv1s")
 
-[node name="BoneAttachment3D" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="1"]
+[node name="BoneRoot" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="1"]
+transform = Transform3D(1, 1.83077e-05, -1.52659e-08, -1.52668e-08, 0.00166774, 0.999999, 1.83077e-05, -0.999999, 0.00166774, -3.86425e-08, -1.86975e-05, 0.0271756)
+bone_name = "Wrist_R"
+bone_idx = 0
+script = ExtResource("6_dp02j")
+width_ratio = 0.8
+
+[node name="BoneThumbMetacarpal" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="2"]
+transform = Transform3D(0.998519, -0.0514604, 0.0176509, 0.017651, 0.613335, 0.789626, -0.0514604, -0.788145, 0.613335, -0.00999954, 0.0200266, 3.59323e-05)
+bone_name = "Thumb_Metacarpal_R"
+bone_idx = 1
+script = ExtResource("6_dp02j")
+length = 0.05
+
+[node name="BoneThumbProximal" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="3"]
+transform = Transform3D(0.921479, -0.383958, 0.0587628, 0.124052, 0.434264, 0.892203, -0.368087, -0.814856, 0.447796, -0.012311, 0.0475754, -0.0353648)
+bone_name = "Thumb_Proximal_R"
+bone_idx = 2
+script = ExtResource("6_dp02j")
+
+[node name="BoneThumbDistal" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="4"]
+transform = Transform3D(0.930159, -0.366844, -0.0151708, 0.154037, 0.352396, 0.923087, -0.333283, -0.860954, 0.384292, -0.028494, 0.0658787, -0.0697092)
+bone_name = "Thumb_Distal_R"
+bone_idx = 3
+script = ExtResource("6_dp02j")
+length = 0.02
+
+[node name="BoneIndexMetacarpal" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="5"]
+transform = Transform3D(0.999165, -0.0336562, 0.0231681, -0.0231985, -0.00051113, 0.999731, -0.0336353, -0.999433, -0.00129147, 0.0100005, 0.0224317, 3.59286e-05)
+bone_name = "Index_Metacarpal_R"
+bone_idx = 5
+script = ExtResource("6_dp02j")
+length = 0.08
+width_ratio = 0.2
+
+[node name="BoneIndexProximal" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="6"]
+transform = Transform3D(0.997821, -0.0419385, 0.0509327, -0.0413169, 0.204661, 0.97796, -0.0514381, -0.977934, 0.202483, 0.00729559, 0.0223907, -0.0802861)
+bone_name = "Index_Proximal_R"
+bone_idx = 6
+script = ExtResource("6_dp02j")
+
+[node name="BoneIndexMiddle" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="7"]
+transform = Transform3D(0.759851, -0.644453, 0.0854741, 0.0405881, 0.178251, 0.983148, -0.648829, -0.743577, 0.161601, 0.00569705, 0.0301916, -0.117561)
+bone_name = "Index_Intermediate_R"
+bone_idx = 7
+script = ExtResource("6_dp02j")
+length = 0.025
+bone_group = "IndexFinger"
+
+[node name="BoneIndexDistal" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="8"]
+transform = Transform3D(0.356467, -0.927111, 0.115741, 0.109286, 0.164404, 0.98032, -0.927894, -0.336803, 0.159925, -0.0145038, 0.035779, -0.140869)
+bone_name = "Index_Distal_R"
+bone_idx = 8
+script = ExtResource("6_dp02j")
+length = 0.02
+bone_group = "IndexFinger"
+
+[node name="BoneMiddleMetacarpal" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="9"]
+transform = Transform3D(0.999918, 0.0127165, 0.00125617, -0.000365489, -0.0698022, 0.997561, 0.0127732, -0.99748, -0.0697919, 0.0100005, 0.00355416, 3.59286e-05)
+bone_name = "Middle_Metacarpal_R"
+bone_idx = 10
+script = ExtResource("6_dp02j")
+length = 0.08
+width_ratio = 0.2
+
+[node name="BoneMiddleProximal" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="10"]
+transform = Transform3D(0.971345, -0.237654, 0.00293004, -0.0207339, -0.0724503, 0.997156, -0.236766, -0.968644, -0.0753018, 0.0110237, -0.00206236, -0.0802245)
+bone_name = "Middle_Proximal_R"
+bone_idx = 11
+script = ExtResource("6_dp02j")
+
+[node name="BoneMiddleMiddle" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="11"]
+transform = Transform3D(0.764922, -0.643162, 0.0351718, -0.0290327, 0.0201225, 0.999376, -0.643468, -0.765466, -0.00328059, 0.00032845, -0.00532286, -0.123817)
+bone_name = "Middle_Intermediate_R"
+bone_idx = 12
+script = ExtResource("6_dp02j")
+length = 0.025
+
+[node name="BoneMiddleDistal" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="12"]
+transform = Transform3D(0.297115, -0.95453, 0.0243818, -0.0374454, 0.0138673, 0.999202, -0.954107, -0.297791, -0.0316226, -0.0205207, -0.00467055, -0.148631)
+bone_name = "Middle_Distal_R"
+bone_idx = 13
+script = ExtResource("6_dp02j")
+length = 0.02
+
+[node name="BoneRingMetacarpal" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="13"]
+transform = Transform3D(0.998609, -0.047074, -0.0237409, 0.0169882, -0.138981, 0.990149, -0.0499098, -0.989175, -0.137988, 0.0100005, -0.0130734, 3.59304e-05)
+bone_name = "Ring_Metacarpal_R"
+bone_idx = 15
+script = ExtResource("6_dp02j")
+length = 0.07
+width_ratio = 0.2
+
+[node name="BoneRingProximal" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="14"]
+transform = Transform3D(0.982964, -0.181854, -0.0266582, -0.0109494, -0.202722, 0.979175, -0.183471, -0.962202, -0.20126, 0.00651963, -0.0233502, -0.0731075)
+bone_name = "Ring_Proximal_R"
+bone_idx = 16
+script = ExtResource("6_dp02j")
+length = 0.028
+
+[node name="BoneRingMiddle" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="15"]
+transform = Transform3D(0.772579, -0.634603, -0.0200164, -0.0794844, -0.127948, 0.98859, -0.629924, -0.762173, -0.149291, -0.000778395, -0.0314857, -0.111722)
+bone_name = "Ring_Intermediate_R"
+bone_idx = 17
+script = ExtResource("6_dp02j")
+length = 0.025
+
+[node name="BoneRingDistal" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="16"]
+transform = Transform3D(0.381388, -0.924068, -0.025339, -0.114105, -0.0742599, 0.990689, -0.917346, -0.374945, -0.133762, -0.0184188, -0.0350424, -0.132908)
+bone_name = "Ring_Distal_R"
+bone_idx = 18
+script = ExtResource("6_dp02j")
+length = 0.02
+
+[node name="BonePinkyMetacarpal" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="17"]
+transform = Transform3D(0.998969, -0.0165318, -0.0422887, 0.0385953, -0.181426, 0.982647, -0.0239172, -0.983265, -0.180601, 4.58211e-07, -0.0299734, 3.59304e-05)
+bone_name = "Little_Metacarpal_R"
+bone_idx = 20
+script = ExtResource("6_dp02j")
+length = 0.07
+width_ratio = 0.18
+
+[node name="BonePinkyProximal" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="18"]
+transform = Transform3D(0.969212, -0.239304, -0.0579745, -0.0185535, -0.305761, 0.951928, -0.245527, -0.921544, -0.300787, -0.00108587, -0.0418952, -0.0645756)
+bone_name = "Little_Proximal_R"
+bone_idx = 21
+script = ExtResource("6_dp02j")
+length = 0.02
+
+[node name="BonePinkyMiddle" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="19"]
+transform = Transform3D(0.699331, -0.713816, -0.0374602, -0.103947, -0.153407, 0.982681, -0.707199, -0.683325, -0.181481, -0.00901247, -0.0520231, -0.0951004)
+bone_name = "Little_Intermediate_R"
+bone_idx = 22
+script = ExtResource("6_dp02j")
+length = 0.015
+
+[node name="BonePinkyDistal" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="20"]
+transform = Transform3D(0.340891, -0.939844, -0.0220291, -0.162162, -0.081867, 0.983362, -0.926011, -0.331647, -0.180315, -0.0218786, -0.0547881, -0.107417)
+bone_name = "Little_Distal_R"
+bone_idx = 23
+script = ExtResource("6_dp02j")
+length = 0.015
+
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="XROrigin3D/RightHand/RightHand/Hand_low_R/Armature/Skeleton3D" index="21"]
 transform = Transform3D(0.540829, -0.840813, 0.0231736, 0.0826268, 0.0805242, 0.993322, -0.837064, -0.535303, 0.113024, -0.039902, 0.0402828, -0.150096)
 bone_name = "Index_Tip_R"
 bone_idx = 9
@@ -412,7 +813,7 @@ root_node = NodePath("../Hand_low_R")
 libraries = {
 "": SubResource("AnimationLibrary_reqae")
 }
-tree_root = SubResource("AnimationNodeBlendTree_y4ice")
+tree_root = SubResource("AnimationNodeBlendTree_aavym")
 
 [node name="FunctionPoseDetector" parent="XROrigin3D/RightHand" instance=ExtResource("39_1rt5c")]
 
@@ -423,6 +824,9 @@ tree_root = SubResource("AnimationNodeBlendTree_y4ice")
 [node name="FunctionPointer" parent="XROrigin3D/RightHand" instance=ExtResource("42_xywkl")]
 show_laser = 2
 laser_length = 1
+
+[node name="MovementJump" parent="XROrigin3D/RightHand" instance=ExtResource("44_k3ptv")]
+jump_button_action = "ax_button"
 
 [node name="PlayerBody" parent="XROrigin3D" instance=ExtResource("79_kxy20")]
 
@@ -435,6 +839,14 @@ viewport_size = Vector2(640, 360)
 transform = Transform3D(0.120537, 0, 0.992709, 0, 1, 0, -0.992709, 0, 0.120537, 5.08021, -0.886103, -1.20537)
 scene = "res://scenes/climbing_gliding_demo/climbing_gliding_demo.tscn"
 title = ExtResource("84_e7o81")
+
+[node name="Finish_Button" parent="." instance=ExtResource("87_smoha")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1313, 0, 0)
+
+[node name="ToInteractablesDemo" parent="." instance=ExtResource("83_c81ud")]
+transform = Transform3D(-0.748511, 0, 0.663123, 0, 1, 0, -0.663123, 0, -0.748511, 2.28987, -1.0611, -3.8483)
+scene = "res://scenes/interactables_demo/interactables_demo.tscn"
+title = ExtResource("88_nthhf")
 
 [editable path="CLASSROOM"]
 [editable path="XROrigin3D/LeftHand/LeftHand"]
