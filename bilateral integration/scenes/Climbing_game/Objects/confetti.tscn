@@ -1,23 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://ch6iq8gs0enso"]
+[gd_scene load_steps=4 format=3 uid="uid://i35jf4w4is5e"]
 
-[ext_resource type="Script" path="res://scenes/Climbing_game/Objects/Confetti_spawn.gd" id="1_13u7e"]
+[ext_resource type="Script" path="res://scenes/Climbing_game/Objects/Confetti_spawn.gd" id="1_sxyvf"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cvgh2"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7vxmy"]
 
-[sub_resource type="BoxMesh" id="BoxMesh_dnpqx"]
+[sub_resource type="BoxMesh" id="BoxMesh_vlvnh"]
 size = Vector3(0, 0.5, 0.5)
 
 [node name="Confetti" type="Node3D"]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-material_override = SubResource("StandardMaterial3D_cvgh2")
-mesh = SubResource("BoxMesh_dnpqx")
-script = ExtResource("1_13u7e")
+material_override = SubResource("StandardMaterial3D_7vxmy")
+mesh = SubResource("BoxMesh_vlvnh")
+script = ExtResource("1_sxyvf")
 
 [node name="Timer" type="Timer" parent="."]
 wait_time = 0.3
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.020925, 0, 0.999781, 0, 1, 0, -0.999781, 0, -0.020925, 1.6073, 0, 0.0231884)
 
 [connection signal="timeout" from="Timer" to="MeshInstance3D" method="_on_timer_timeout"]
