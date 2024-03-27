@@ -1,4 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://cjxs370mjoq72"]
+[gd_scene load_steps=4 format=3 uid="uid://cjxs370mjoq72"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rdp35"]
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fkfkc"]
 lifetime_randomness = 0.4
@@ -14,10 +16,13 @@ collision_use_scale = true
 sub_emitter_mode = 1
 sub_emitter_frequency = 100.0
 
+[sub_resource type="QuadMesh" id="QuadMesh_at0st"]
+
 [node name="Confetti_explosion" type="Node3D"]
 
 [node name="ConfettiSpread" type="GPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.423, 0)
+material_override = SubResource("StandardMaterial3D_rdp35")
 gi_mode = 0
 emitting = false
 lifetime = 3.0
@@ -26,3 +31,4 @@ explosiveness = 1.0
 randomness = 0.7
 visibility_aabb = AABB(-10.164, -5.09, -11.673, 23.59, 8.516, 21.508)
 process_material = SubResource("ParticleProcessMaterial_fkfkc")
+draw_pass_1 = SubResource("QuadMesh_at0st")
